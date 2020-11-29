@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <title>Droply - Dashboard</title>
+    <link rel="stylesheet" href="assets/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.bundle.js"></script>
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/google/263/droplet_1f4a7.png"/>
+    
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+  </head>
+
+  <body>
+
+
+    <header class="bg-primary text-white">
+      <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="#" style="position: relative;">
+            <div id="logo" style="width: 48px; height: 48px;position: relative;display:inline-block;vertical-align: bottom;">
+              <i class="fas fa-tint" style="position: absolute;font-size: 32px;left: 6px;top:1px"></i>
+              <i class="fas fa-tint"  style="position: absolute;font-size: 20px;right: 6px;top: 16px"></i>
+              <i class="fas fa-tint" style="position: absolute;font-size: 16px;left: 20px;top:31px"></i>
+            </div>
+            <h2 class="d-inline-block">Droply</h2>
+            <blockquote class="text-white font-italic my-2 my-lg-0" id="cytat">
+              <!-- Pij wodę, będziesz wielkie! -->
+              Drink water, you'll be great!
+            </blockquote>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sensors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Analytics</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Alerts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><b>Community</b></a>
+              </li>
+              
+            </ul>
+              
+              <button type="button" class="btn btn-outline-light">
+                Today's Dropis <span class="badge badge-light">4</span>
+              </button>
+              <button type="button" class="btn btn-link text-light"><i class="far fa-user"></i> p.kubiak</button>
+              <!-- <button class="btn btn-success">12,345 droply saved</button> -->
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    
+    
+    <div class="container" style="margin-top:-3em">
+      <div class="card border-danger mb-4" >
+        <div class="card-body text-danger">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h5 class="card-title"><i class="fas fa-faucet fa-2x mr-2 mb-1" style="float:left"></i> Dripping tap</h5>
+          <p class="card-text">has been detected in <b>Kran - Łazienka</b>! Fix it quickly to save dropies.</p>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card text-right mt-4" id="water-flow">
+            <div class="card-body">
+              <div class="card-icon"><i class="fas fa-tint"></i></div>
+              <p class="card-text font-weight-light mb-1">Water consumption</p>
+
+              <h3 class="card-title mb-0" data-unit="l/min" data-value="0.0"></h3>
+            </div>
+          </div>
+          <small class="card-meta">Updated 17s ago</small>
+        </div>
+      
+        <div class="col-sm-4">
+          <div class="card text-right mt-4" id="water-temperature">
+            <div class="card-body">
+              <div class="card-icon"><i class="fas fa-thermometer-half"></i></div>
+              <p class="card-text font-weight-light mb-1">Avg. water temp</p>
+
+              <h3 class="card-title mb-0" data-value="0.0" data-unit="&deg;C"></h3>
+            </div>
+          </div>
+          <small class="card-meta">Updated 2min ago</small>
+        </div>
+      
+        <div class="col-sm-4">
+          <div class="card text-right mt-4">
+            <div class="card-body">
+              <div class="card-icon" style="background: var(--blue)"><i class="far fa-calendar-alt"></i></div>
+              <p class="card-text font-weight-light mb-1">Monthly consumption</p>
+
+              <h3 class="card-title mb-0">1mld tears</h3>
+            </div>
+          </div>
+          <small class="card-meta">Updated 15min ago</small>
+        </div>
+      </div>
+
+
+      <div class="card mt-5">
+        <div class="card-body">
+          <div class="p-3 rounded text-white mb-3" style="margin-top: -40px; background: #4caf50">
+            <canvas id="myChart" style="width: 100%; height: 180px"></canvas>
+          </div>
+          <h5 class="card-title font-weight-light">Your daily usage <small style="float: right" class="px-3"><i class="fas fa-arrow-up"></i> 55% increase today water </small></h5>
+          <!-- <p class="card-text"></p>   -->
+        </div>
+      </div>
+      <small class="card-meta">
+        <i class="far fa-clock"></i> Last updated 1min ago
+      </small>
+
+      <h4 class="font-weight-light mt-4">Your Sensors</h4>
+      <div class="row mt-3">
+          {% for sensor in sensors %}
+            <div class="col-sm-4">
+              <div class="card text-right mt-4 card-{{ sensor.type }}">
+                <div class="card-body">
+                  <div class="card-icon {% if sensor.usage or sensor.usage ==0 %}{% if sensor.usage < 1.0 %}color-green{% else %}color-orange{% endif %}{% endif %}">
+                      <i class="fas fa-{{ sensor.type }}"></i>
+                  </div>
+                  <h5 class="card-title"><a href="#" class="stretched-link">{{ sensor.name }}</a></h5>
+                  {% if sensor.usage or sensor.usage == 0 %}
+                  <p class="card-text">
+                    {% if sensor.usage < 1.0 %}Low{% else %}High{% endif %} water usage</p>
+                  {% endif %}
+                </div>
+              </div>
+              <small class="card-meta">
+                {% if sensor.last_connected %}
+                  Last used {{moment(sensor.last_connected).fromNow()}}
+                {% else %}
+                  &nbsp; 
+                {% endif %}
+              </small>
+          </div>
+          {% endfor %}
+      </div>
+      
+      <!-- <div class="card">
+          <div class="card-body">
+              This is some text within a card body.
+          </div>
+      </div> -->
+  
+      <footer class="text-center p-5">&copy; Droply - Marek Ciążyński & Paweł Kubiak - 2020</footer>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="assets/plot.js"></script>
+    <script src="assets/main.js"></script>
+  </body>
+</html>

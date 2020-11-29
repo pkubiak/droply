@@ -1,0 +1,102 @@
+body {
+    background: #eeeeee;
+}
+
+.card {
+    box-shadow: 0 1px 3px 0px #0004;
+}
+
+.card-meta {
+    opacity: 0.7;
+    /* margin-top:-16px; */
+    /* background: red; */
+    text-align:right;
+    display: block;
+    padding: 2px 8px;
+    /* d-block text-right pr-2 text-muted  */
+}
+
+
+.card-icon {
+    font-size: 60px;
+    text-align: center;
+    line-height: 100px;
+    background:#bbb;
+    color: white;
+    margin-top: -40px;
+    float:left;
+    background-size:cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 6px;
+    box-shadow: 0 0 20px 5px #0003;
+}
+
+
+
+
+.card-tools {
+    /* opacity: 0.2 !important; */
+}
+
+
+.card-seeding .card-icon {
+    background: green;
+}
+
+
+*[data-unit]:after {
+    content: attr(data-unit);
+}
+
+:root {
+    --gray: #bbb;
+}
+
+
+.color-green {
+    background: var(--teal)
+}
+
+.color-orange {
+    background: var(--orange)
+}
+
+header {
+    padding-top: 3em;
+    padding-bottom: 5em;
+}
+
+footer {
+    opacity: 0.7;
+}
+
+#cytat {
+    font-size: 0.7em !important;
+    position:absolute;
+    /* background: red; */
+    left: 70px;
+    bottom: -10px;
+}
+
+
+@media (max-width: 575px) {
+    .card-icon {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 40px;
+        /* font-size: */
+    }
+
+    header {
+        padding-top: 1em;
+        padding-bottom: 4em;
+    }
+
+    #cytat {
+        bottom: -16px;
+        left: 60px;
+    }
+}
+
